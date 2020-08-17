@@ -1,0 +1,504 @@
+= Spring Boot 项目API文档
+
+
+[[_overview]]
+== 概览
+restful 的风格的练习Demo
+
+
+=== 版本信息
+[%hardbreaks]
+__版本__ : 1.0
+
+
+=== URI scheme
+[%hardbreaks]
+__域名__ : localhost:8080
+__基础路径__ : /
+
+
+=== 标签
+
+* article-controller : Article Controller
+
+
+
+
+[[_paths]]
+== 资源
+
+[[_article-controller_resource]]
+=== Article-controller
+Article Controller
+
+
+[[_addarticleusingpost]]
+==== AddArticle
+....
+POST /test/article
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**article** +
+__必填__|article|<<_article,Article>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_6a07b703827829ce0440539d0e6e4d8d,通用响应数据结构类>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/test/article
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "author" : "string",
+  "code" : "string",
+  "id" : "string",
+  "name" : "string",
+  "publishingdate" : "string",
+  "reader" : {
+    "age" : 0,
+    "name" : "string",
+    "sex" : "string"
+  },
+  "readerList" : [ {
+    "age" : 0,
+    "name" : "string",
+    "sex" : "string"
+  } ]
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : "200,400,500",
+  "extend" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_updatearticleusingput]]
+==== UpdateArticle
+....
+PUT /test/article
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Body**|**article** +
+__必填__|article|<<_article,Article>>
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_6a07b703827829ce0440539d0e6e4d8d,通用响应数据结构类>>
+|**201**|Created|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/test/article
+----
+
+
+====== 请求 body
+[source,json]
+----
+{
+  "author" : "string",
+  "code" : "string",
+  "id" : "string",
+  "name" : "string",
+  "publishingdate" : "string",
+  "reader" : {
+    "age" : 0,
+    "name" : "string",
+    "sex" : "string"
+  },
+  "readerList" : [ {
+    "age" : 0,
+    "name" : "string",
+    "sex" : "string"
+  } ]
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : "200,400,500",
+  "extend" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_delarticlebyidusingdelete]]
+==== DelArticleById
+....
+DELETE /test/article
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Query**|**id** +
+__必填__|id|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_6a07b703827829ce0440539d0e6e4d8d,通用响应数据结构类>>
+|**204**|No Content|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/test/article
+----
+
+
+====== 请求 query
+[source,json]
+----
+{
+  "id" : "string"
+}
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : "200,400,500",
+  "extend" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_getarticleusingget]]
+==== GetArticle
+....
+GET /test/article/{id}
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Path**|**id** +
+__必填__|id|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_6a07b703827829ce0440539d0e6e4d8d,通用响应数据结构类>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/test/article/string
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : "200,400,500",
+  "extend" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_delarticleusingdelete]]
+==== DelArticle
+....
+DELETE /test/article/{id}
+....
+
+
+===== 参数
+
+[options="header", cols=".^2,.^3,.^9,.^4"]
+|===
+|类型|名称|说明|类型
+|**Path**|**id** +
+__必填__|id|string
+|===
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_6a07b703827829ce0440539d0e6e4d8d,通用响应数据结构类>>
+|**204**|No Content|无内容
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/test/article/string
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : "200,400,500",
+  "extend" : "object",
+  "msg" : "string"
+}
+----
+
+
+[[_getarticlesusingget]]
+==== GetArticles
+....
+GET /test/articles
+....
+
+
+===== 响应
+
+[options="header", cols=".^2,.^14,.^4"]
+|===
+|HTTP代码|说明|类型
+|**200**|OK|<<_6a07b703827829ce0440539d0e6e4d8d,通用响应数据结构类>>
+|**401**|Unauthorized|无内容
+|**403**|Forbidden|无内容
+|**404**|Not Found|无内容
+|===
+
+
+===== 消耗
+
+* `application/json`
+
+
+===== 生成
+
+* `*/*`
+
+
+===== HTTP请求示例
+
+====== 请求 path
+----
+/test/articles
+----
+
+
+===== HTTP响应示例
+
+====== 响应 200
+[source,json]
+----
+{
+  "code" : "200,400,500",
+  "extend" : "object",
+  "msg" : "string"
+}
+----
+
+
+
+
+[[_definitions]]
+== 定义
+
+[[_article]]
+=== Article
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**author** +
+__可选__|**样例** : `"string"`|string
+|**code** +
+__可选__|**样例** : `"string"`|string
+|**id** +
+__可选__|**样例** : `"string"`|string
+|**name** +
+__可选__|**样例** : `"string"`|string
+|**publishingdate** +
+__可选__|**样例** : `"string"`|string (date-time)
+|**reader** +
+__可选__|**样例** : `"<<_readeer>>"`|<<_readeer,Readeer>>
+|**readerList** +
+__可选__|**样例** : `[ "<<_readeer>>" ]`|< <<_readeer,Readeer>> > array
+|===
+
+
+[[_readeer]]
+=== Readeer
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**age** +
+__可选__|**样例** : `0`|integer (int32)
+|**name** +
+__可选__|**样例** : `"string"`|string
+|**sex** +
+__可选__|**样例** : `"string"`|string
+|===
+
+
+[[_6a07b703827829ce0440539d0e6e4d8d]]
+=== 通用响应数据结构类
+
+[options="header", cols=".^3,.^11,.^4"]
+|===
+|名称|说明|类型
+|**code** +
+__可选__|请求响应状态码 +
+**样例** : `"200,400,500"`|integer (int32)
+|**extend** +
+__可选__|**样例** : `"object"`|object
+|**msg** +
+__可选__|请求结果描述信息 +
+**样例** : `"string"`|string
+|===
+
+
+
+
+

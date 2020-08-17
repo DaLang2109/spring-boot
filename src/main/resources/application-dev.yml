@@ -1,0 +1,10 @@
+#开发环境
+server:
+  port: 80
+
+Spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+
+
