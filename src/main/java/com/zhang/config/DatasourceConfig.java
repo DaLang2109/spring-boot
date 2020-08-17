@@ -2,7 +2,7 @@ package com.zhang.config;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.boot.jta.atomikos.AtomikosDataSourceBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
@@ -14,25 +14,27 @@ import javax.sql.DataSource;
 public class DatasourceConfig {
 
     /****
-     *  构建多个数据源
+     * 构建多个数据源
      * @return
      */
+
     @Primary
-    @Bean("primaryDatasource")
-    @ConfigurationProperties(prefix = "spring.datasource.primary")
+    @Bean(name = "primaryDatasource",initMethod = "init",destroyMethod = "close")
+    @ConfigurationProperties(prefix = "primarydb")
     public DataSource primaryDatasource(){
-        return DataSourceBuilder.create().build();
+        return new AtomikosDataSourceBean();
     }
 
-    @Bean("secondaryDatasource")
-    @ConfigurationProperties(prefix = "spring.datasource.secondary")
+    @Bean(name = "secondaryDatasource",initMethod = "init",destroyMethod = "close")
+    @ConfigurationProperties(prefix = "secondarydb")
     public DataSource secondaryDatasource(){
-        return DataSourceBuilder.create().build();
+        return new AtomikosDataSourceBean();
     }
 
     /****
-     *  构建 JDBCtemplate
-     *
+     * 构建 JDBCtemplate
+     * @param dataSource
+     * @return
      */
 
     @Bean("primaryJdbcTemplate")

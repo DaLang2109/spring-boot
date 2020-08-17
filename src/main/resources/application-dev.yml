@@ -1,28 +1,52 @@
 #开发环境
+#?autoReconnect=true&useUnicode=true&createDatabaseIfNotExist=true&characterEncoding=utf8&useSSL=true&serverTimezone=UTC
+#?useUnicode=true&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE
 server:
   port: 80
-
+jasypt:
+  encryptor:
+    password: 123
 Spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
-  datasource:
-    primary:
-      jdbc-url: jdbc:mysql://192.168.56.101:3306/ypzhang?characterEncoding=utf-8&serverTimezone=GMT%2B8
-      password: zyp
-      username: root
-      driver-class-name: com.mysql.cj.jdbc.Driver
-    secondary:
-      jdbc-url: jdbc:mysql://192.168.56.101:3306/ypzhang2?characterEncoding=utf-8&serverTimezone=GMT%2B8
-      password: zyp
-      username: root
-      driver-class-name: com.mysql.cj.jdbc.Driver
+#  datasource:
+#    primary:
+#      jdbc-url: jdbc:mysql://192.168.56.101:3306/ypzhang?characterEncoding=utf-8&serverTimezone=GMT%2B8
+#      password: zyp
+#      username: root
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+#    secondary:
+#      jdbc-url: jdbc:mysql://192.168.56.101:3306/ypzhang2?characterEncoding=utf-8&serverTimezone=GMT%2B8
+#      password: zyp
+#      username: root
+#      driver-class-name: com.mysql.cj.jdbc.Driver
+
+#XA规范下的数据源配置
+primarydb:
+  uniqueResourceName: primary
+  xaDataSourceClassName: com.mysql.cj.jdbc.MysqlXADataSource
+  xaProperties :
+    url: jdbc:mysql://192.168.56.101:3306/ypzhang?characterEncoding=utf-8&serverTimezone=GMT%2B8&pinGlobalTxToPhysicalConnection=true
+    user: root
+    password: zyp
+  exclusiveConnectionMode: true
+  minPoolSize: 3
+  maxPoolSize: 10
+  testQuery: SELECT 1 from dual #由F采用HikiriCP,用F检测数据库连接是否存活。
+
+secondarydb:
+  uniqueResourceName: secondary
+  xaDataSourceClassName: com.mysql.cj.jdbc.MysqlXADataSource
+  xaProperties :
+    url: jdbc:mysql://192.168.56.101:3306/ypzhang2?characterEncoding=utf-8&serverTimezone=GMT%2B8&pinGlobalTxToPhysicalConnection=true
+    user: root
+    password: zyp
+  exclusiveConnectionMode: true
+  minPoolSize: 3
+  maxPoolSize: 10
+  testQuery: SELECT 1 from dual #由F采用HikiriCP,用F检测数据库连接是否存活。
 
 
 
-jasypt:
-  encryptor:
-    password: 123
 
-#?autoReconnect=true&useUnicode=true&createDatabaseIfNotExist=true&characterEncoding=utf8&useSSL=true&serverTimezone=UTC
-#?useUnicode=true&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE

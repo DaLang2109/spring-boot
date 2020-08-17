@@ -4,9 +4,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ImportResource;
 
-//@SpringBootApplication(exclude = {
-//        DataSourceAutoConfiguration.class
-//})
 @SpringBootApplication
 @ImportResource(locations = {"classpath:test-bean.xml"})
 public class MainApplication {
@@ -15,4 +12,3 @@ public class MainApplication {
     }
 
 }
-//exclude = { DataSourceAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class }
