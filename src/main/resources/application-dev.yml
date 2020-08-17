@@ -7,7 +7,7 @@ Spring:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
   datasource:
-    url: jdbc:mysql://192.168.56.101:3306/ypzhang
+    url: jdbc:mysql://192.168.56.101:3306/ypzhang?useUnicode=true&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE
     data-username: root
     data-password: root
     driver-class-name: com.mysql.cj.jdbc.Driver

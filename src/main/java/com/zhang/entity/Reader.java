@@ -12,7 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Readeer {
+public class Reader {
     private String name;
     private int age;
     private String sex;

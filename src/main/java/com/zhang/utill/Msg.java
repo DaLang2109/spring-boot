@@ -20,7 +20,7 @@ public class Msg {
     // 状态码 200-成功 400
     private int code;
     private String msg;
-    private Map<String, Object> extend = new HashMap<String, Object>();
+    private Map<String, Object> data = new HashMap<String, Object>();
     public static Msg success() {
         Msg msg = new Msg();
         msg.setCode(200);
@@ -36,7 +36,7 @@ public class Msg {
     }
 
     public Msg add(String key, Object value) {
-        this.getExtend().put(key, value);
+        this.getData().put(key, value);
         return this;
     }
 

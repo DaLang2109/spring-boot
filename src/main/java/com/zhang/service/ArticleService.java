@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class ArticleService {
-    public String getArticle(Article article) {
+    public Long getArticle(Article article) {
         return article.getId();
     }
 }
