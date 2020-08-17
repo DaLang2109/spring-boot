@@ -2,7 +2,7 @@ package com.zhang.controller;
 
 
 import com.zhang.entity.Article;
-import com.zhang.service.ArticleServiceImp;
+import com.zhang.service.ArticleServiceJdbcImp;
 import com.zhang.utill.Msg;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +15,7 @@ import javax.annotation.Resource;
 public class ArticleController {
 
     @Resource
-    ArticleServiceImp articleServiceImp;
+    ArticleServiceJdbcImp articleServiceJdbcImp;
 
     /****
      * 添加文章
@@ -23,7 +23,7 @@ public class ArticleController {
      */
     @PostMapping("/article")
     public Msg AddArticle(@RequestBody Article article) {
-        articleServiceImp.saveArticle(article);
+        articleServiceJdbcImp.saveArticle(article);
         return Msg.success();
     }
 
@@ -34,14 +34,14 @@ public class ArticleController {
     /*http://localhost:8080/test/article?id=55*/
     @DeleteMapping("/article/{id}")
     public Msg DelArticle(@PathVariable("id") Long id) {
-        articleServiceImp.delArticle(id);
+        articleServiceJdbcImp.delArticle(id);
         return Msg.success();
     }
 
     /*http://localhost:8080/test/article?id=55*/
     @DeleteMapping("/article")
     public Msg DelArticleById(@RequestParam("id") Long id) {
-        articleServiceImp.delArticle(id);
+        articleServiceJdbcImp.delArticle(id);
         return Msg.success();
     }
 
@@ -56,7 +56,7 @@ public class ArticleController {
             return Msg.fail();
         }
         {
-            articleServiceImp.updateArticle(article);
+            articleServiceJdbcImp.updateArticle(article);
             return Msg.success();
         }
     }
@@ -67,7 +67,7 @@ public class ArticleController {
      */
     @GetMapping("/article/{id}")
     public Msg GetArticle(@PathVariable("id") Long id) {
-        return Msg.success().add("article", articleServiceImp.queryById(id));
+        return Msg.success().add("article", articleServiceJdbcImp.queryById(id));
     }
 
     /****
@@ -76,7 +76,7 @@ public class ArticleController {
      */
     @GetMapping("/articles")
     public Msg GetArticles() {
-        return Msg.success().add("List", articleServiceImp.queryAll());
+        return Msg.success().add("List", articleServiceJdbcImp.queryAll());
     }
 
 }

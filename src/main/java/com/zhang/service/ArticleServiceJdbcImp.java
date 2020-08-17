@@ -3,12 +3,13 @@ package com.zhang.service;
 import com.zhang.dao.ArticleJdbcDao;
 import com.zhang.entity.Article;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
 
 @Service
-public class ArticleServiceImp implements ArticleService {
+public class ArticleServiceJdbcImp implements ArticleService {
 
     @Resource
     private ArticleJdbcDao articledao;
@@ -19,6 +20,7 @@ public class ArticleServiceImp implements ArticleService {
     }
 
     @Override
+    @Transactional
     public void updateArticle(Article article) {
         articledao.updateArticle(article);
     }
