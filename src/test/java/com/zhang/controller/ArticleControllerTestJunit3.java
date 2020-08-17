@@ -50,7 +50,7 @@ public class ArticleControllerTestJunit3 {
         //打桩
         ObjectMapper mapper = new ObjectMapper();
         Article article2 = mapper.readValue(article, Article.class);
-        when(ArticleService.getArticle(article2)).thenReturn("5555555");
+        when(ArticleService.getArticle(article2)).thenReturn((long) 5555555);
         //执行
         MvcResult mvcResult = mockMvc.perform(
                 MockMvcRequestBuilders

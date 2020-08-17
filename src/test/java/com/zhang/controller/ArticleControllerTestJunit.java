@@ -48,8 +48,6 @@ public class ArticleControllerTestJunit {
         )
         .andExpect(MockMvcResultMatchers.status().isOk())
         .andExpect(MockMvcResultMatchers.jsonPath("$..id").value("999"))
-        .andExpect(MockMvcResultMatchers.jsonPath("$.extend.article.name").value("山沟皇帝的宝宝"))
-        .andExpect(MockMvcResultMatchers.jsonPath("$.extend.article.reader.age").value(18))
         .andDo(print())
         .andReturn();
         mvcResult.getResponse().setCharacterEncoding("utf-8");
