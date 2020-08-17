@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Repository
-public class ArticleDao {
+public class ArticleJdbcDao {
 
     @Resource
     private JdbcTemplate jdbcTemplate;

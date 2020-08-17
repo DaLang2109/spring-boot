@@ -30,7 +30,7 @@ public class ArticleControllerTestJunit3 {
     @Resource
     private MockMvc mockMvc;
     @MockBean
-    private com.zhang.service.ArticleService ArticleService;
+    private com.zhang.service.ArticleServiceImp ArticleServiceImp;
 /*重点*/
     @Test
     public void TestSaveArticle() throws Exception {
@@ -50,7 +50,7 @@ public class ArticleControllerTestJunit3 {
         //打桩
         ObjectMapper mapper = new ObjectMapper();
         Article article2 = mapper.readValue(article, Article.class);
-        when(ArticleService.getArticle(article2)).thenReturn((long) 5555555);
+        when(ArticleServiceImp.queryById(article2.getId()));
         //执行
         MvcResult mvcResult = mockMvc.perform(
                 MockMvcRequestBuilders

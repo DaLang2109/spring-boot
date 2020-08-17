@@ -1,6 +1,6 @@
 package com.zhang.config;
 
-public class Swaggerconfig {
+ public class Swaggerconfig {
 //    private ApiInfo apiInfo(){
 //        return new ApiInfoBuilder()
 //                .title("Spring Boot 项目API文档")

@@ -2,15 +2,12 @@ package com.zhang.controller;
 
 
 import com.zhang.entity.Article;
-import com.zhang.entity.Reader;
-import com.zhang.service.ArticleService;
+import com.zhang.service.ArticleServiceImp;
 import com.zhang.utill.Msg;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.Date;
 
 @RestController
 @Slf4j
@@ -18,7 +15,7 @@ import java.util.Date;
 public class ArticleController {
 
     @Resource
-    ArticleService articleService;
+    ArticleServiceImp articleServiceImp;
 
     /****
      * 添加文章
@@ -26,7 +23,8 @@ public class ArticleController {
      */
     @PostMapping("/article")
     public Msg AddArticle(@RequestBody Article article) {
-        return Msg.success().add("article",article);
+        articleServiceImp.saveArticle(article);
+        return Msg.success();
     }
 
     /****
@@ -35,27 +33,30 @@ public class ArticleController {
      */
     /*http://localhost:8080/test/article?id=55*/
     @DeleteMapping("/article/{id}")
-    public Msg DelArticle(@PathVariable("id") String id) {
-        log.info("文章id:"+id);
+    public Msg DelArticle(@PathVariable("id") Long id) {
+        articleServiceImp.delArticle(id);
         return Msg.success();
     }
+
     /*http://localhost:8080/test/article?id=55*/
-    @DeleteMapping ("/article")
-    public Msg DelArticleById(@RequestParam("id") String id) {
-        log.info("id:"+id);
+    @DeleteMapping("/article")
+    public Msg DelArticleById(@RequestParam("id") Long id) {
+        articleServiceImp.delArticle(id);
         return Msg.success();
     }
+
     /****
      * 修改文章
      * @return
      */
-    @PutMapping ("/article")
+    @PutMapping("/article")
     public Msg UpdateArticle(@RequestBody Article article) {
-        if (article.getId()==null){
+        if (article.getId() == null) {
             System.out.println("抛出异常");
             return Msg.fail();
-        }{
-            log.info(article.getAuthor());
+        }
+        {
+            articleServiceImp.updateArticle(article);
             return Msg.success();
         }
     }
@@ -65,20 +66,8 @@ public class ArticleController {
      * @return
      */
     @GetMapping("/article/{id}")
-    public Msg GetArticle(@PathVariable("id") Long id ) {
-
-        ArrayList<Reader> arrayList = new ArrayList<>();
-        arrayList.add(Reader.builder().name("张三").sex("男").age(18).build());
-        arrayList.add(Reader.builder().name("李思思").sex("女").age(23).build());
-
-        Article article = Article.builder()
-                .id(id)
-                .author("下雨")
-                .createTime(new Date())
-                .title("山沟皇帝")
-                .readerList(arrayList)
-                .build();
-        return Msg.success().add("article",article);
+    public Msg GetArticle(@PathVariable("id") Long id) {
+        return Msg.success().add("article", articleServiceImp.queryById(id));
     }
 
     /****
@@ -87,8 +76,19 @@ public class ArticleController {
      */
     @GetMapping("/articles")
     public Msg GetArticles() {
-
-        return Msg.success();
+        return Msg.success().add("List", articleServiceImp.queryAll());
     }
 
 }
+
+//    ArrayList<Reader> arrayList = new ArrayList<>();
+//        arrayList.add(Reader.builder().name("张三").sex("男").age(18).build());
+//                arrayList.add(Reader.builder().name("李思思").sex("女").age(23).build());
+//
+//                Article article = Article.builder()
+//                .id(id)
+//                .author("下雨")
+//                .createTime(new Date())
+//                .title("山沟皇帝")
+//                .readerList(arrayList)
+//                .build();

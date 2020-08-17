@@ -7,10 +7,14 @@ Spring:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
   datasource:
-    url: jdbc:mysql://192.168.56.101:3306/ypzhang?useUnicode=true&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE
-    data-username: root
-    data-password: root
+    url: jdbc:mysql://192.168.56.101:3306/ypzhang?characterEncoding=utf-8&serverTimezone=GMT%2B8
+    password: zyp
+    username: root
     driver-class-name: com.mysql.cj.jdbc.Driver
 
+jasypt:
+  encryptor:
+    password: 123
 
-
+#?autoReconnect=true&useUnicode=true&createDatabaseIfNotExist=true&characterEncoding=utf8&useSSL=true&serverTimezone=UTC
+#?useUnicode=true&characterEncoding=utf8&autoReconnect=true&rewriteBatchedStatements=TRUE
