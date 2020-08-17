@@ -6,5 +6,11 @@ Spring:
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
+  datasource:
+    url: jdbc:mysql://192.168.56.101:3306/ypzhang
+    data-username: root
+    data-password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
 
 
