@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                         http://www.springframework.org/schema/beans/spring-beans-3.1.xsd">
-    <bean id="Reader" class="com.zhang.service.Reader">
-        <property name="readername" value="读者"/>
+    <bean id="Reader" class="com.zhang.entity.Reader">
+        <!--<property name="name" value="读者"/>-->
     </bean>
 </beans>
