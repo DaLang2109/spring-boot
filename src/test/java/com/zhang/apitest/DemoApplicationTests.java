@@ -1,10 +1,6 @@
 package com.zhang.apitest;
 
 
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
-
 /**
  * @author  yanping_zhang
  * @create  2020/8/15 22:10
@@ -12,8 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  **/
 
 //启动应用服务容器
-@RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)//SpringBootTest.WebEnvironment.DEFINED_PORT表示使用application.yml定义的端口
+//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)//SpringBootTest.WebEnvironment.DEFINED_PORT表示使用application.yml定义的端口
 public class DemoApplicationTests {
 
 //    @Test

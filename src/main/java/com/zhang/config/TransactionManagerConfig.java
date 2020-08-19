@@ -12,11 +12,12 @@ import javax.transaction.SystemException;
 import javax.transaction.TransactionManager;
 import javax.transaction.UserTransaction;
 
+
 @Configuration
 public class TransactionManagerConfig {
 
     @Bean
-    public UserTransaction userTransaction() throws SystemException {
+    public UserTransaction userTransaction() throws SystemException, SystemException {
         UserTransactionImp userTransactionImp = new UserTransactionImp();
         userTransactionImp.setTransactionTimeout(10000);
         return userTransactionImp;
@@ -33,7 +34,6 @@ public class TransactionManagerConfig {
     @DependsOn({"userTransaction", "atomikosTransactionManager"})
     public PlatformTransactionManager transactionManager() throws Throwable {
         UserTransaction userTransaction = userTransaction();
-
         return new JtaTransactionManager(userTransaction,atomikosTransactionManager());
     }
 

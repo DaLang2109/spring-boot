@@ -1,51 +1,55 @@
 package com.zhang.service;
 
-import com.zhang.dao.ArticleJdbcDao;
-import com.zhang.entity.Article;
-import org.springframework.jdbc.core.JdbcTemplate;
+import com.zhang.dao.test1.ArticleRepository;
+import com.zhang.dao.test1.Article;
+import com.zhang.entity.ArticleVO;
+import com.zhang.utill.DozerUtill;
+import org.dozer.Mapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ArticleServiceJdbcImp implements ArticleService {
 
     @Resource
-    private ArticleJdbcDao articledao;
+    ArticleRepository articleRepository;
 
     @Resource
-    JdbcTemplate primaryJdbcTemplate;
-
-    @Resource
-    JdbcTemplate secondaryJdbcTemplate;
+    private Mapper dozerMapper;
 
     @Override
     @Transactional
-    public void saveArticle(Article article) {
-        articledao.saveArticle(article,primaryJdbcTemplate);
-        articledao.saveArticle(article,secondaryJdbcTemplate);
+    public void saveArticle(ArticleVO articleVO) {
+        Article article = dozerMapper.map(articleVO, Article.class);
+        articleRepository.save(article);
     }
 
+
     @Override
     @Transactional
-    public void updateArticle(Article article) {
-        articledao.updateArticle(article,null);
+    public void updateArticle(ArticleVO articleVO) {
+        Article article = dozerMapper.map(articleVO, Article.class);
+        articleRepository.save(article);
     }
 
     @Override
     public void delArticle(Long id) {
-        articledao.delArticle(id,null);
+        articleRepository.deleteById(id);
     }
 
     @Override
-    public Article queryById(Long id) {
-        return articledao.queryById(id,null);
+    public ArticleVO queryById(Long id) {
+        Optional<Article> article = articleRepository.findById(id);
+        return dozerMapper.map(article,ArticleVO.class);
     }
 
     @Override
-    public List<Article> queryAll() {
-        return articledao.queryAll(null);
+    public List<ArticleVO> queryAll() {
+        List<Article> articleList = articleRepository.findAll();
+        return DozerUtill.mapList(articleList,ArticleVO.class);
     }
 }

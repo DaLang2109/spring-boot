@@ -1,6 +1,6 @@
 package com.zhang.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.zhang.entity.Article;
+import com.zhang.dao.test1.Article;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

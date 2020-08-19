@@ -1,7 +1,7 @@
 package com.zhang.datasource;
 
 
-import com.zhang.entity.Article;
+import com.zhang.entity.ArticleVO;
 import com.zhang.service.ArticleServiceJdbcImp;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class DatasourceTest {
 
     @Test
     public void DatasourceTest1() {
-        List<Article> articles = articleServiceJdbcImp.queryAll();
+        List<ArticleVO> articles = articleServiceJdbcImp.queryAll();
 
         System.out.println("查询id" + articles.get(0).getId());
 

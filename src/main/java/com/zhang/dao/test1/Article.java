@@ -1,28 +1,29 @@
-package com.zhang.entity;
+package com.zhang.dao.test1;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.validation.annotation.Validated;
 
-import javax.validation.constraints.NotNull;
+import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
-
 @Data
-@Slf4j
 @Builder
-@AllArgsConstructor
 @NoArgsConstructor
-@Validated
+@AllArgsConstructor
+@Entity
+@Table(name = "article")
 public class Article {
-    @NotNull
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false,length = 32)
     private String author;
+    @Column(nullable = false,unique = true,length = 32)
     private String title;
+    @Column(length = 512)
     private String content;
+
     private Date createTime;
-    private List<Reader> readerList;
+
 }

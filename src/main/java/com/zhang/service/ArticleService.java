@@ -1,18 +1,18 @@
 package com.zhang.service;
 
-import com.zhang.entity.Article;
+import com.zhang.entity.ArticleVO;
 
 import java.util.List;
 
 public interface ArticleService {
 
-    public void saveArticle(Article article);
+    public void saveArticle(ArticleVO article);
 
-    public void updateArticle(Article article);
+    public void updateArticle(ArticleVO article);
 
     public void delArticle(Long id);
 
-    public Article queryById(Long id);
+    public ArticleVO queryById(Long id);
 
-    public List<Article> queryAll();
+    public List<ArticleVO> queryAll();
 }

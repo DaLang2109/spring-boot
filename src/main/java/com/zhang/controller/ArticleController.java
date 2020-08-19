@@ -1,7 +1,7 @@
 package com.zhang.controller;
 
 
-import com.zhang.entity.Article;
+import com.zhang.entity.ArticleVO;
 import com.zhang.service.ArticleServiceJdbcImp;
 import com.zhang.utill.Msg;
 import lombok.extern.slf4j.Slf4j;
@@ -22,8 +22,8 @@ public class ArticleController {
      * @return
      */
     @PostMapping("/article")
-    public Msg AddArticle(@RequestBody Article article) {
-        articleServiceJdbcImp.saveArticle(article);
+    public Msg AddArticle(@RequestBody ArticleVO articleVO) {
+        articleServiceJdbcImp.saveArticle(articleVO);
         return Msg.success();
     }
 
@@ -50,13 +50,13 @@ public class ArticleController {
      * @return
      */
     @PutMapping("/article")
-    public Msg UpdateArticle(@RequestBody Article article) {
-        if (article.getId() == null) {
+    public Msg UpdateArticle(@RequestBody ArticleVO articleVO) {
+        if (articleVO.getId() == null) {
             System.out.println("抛出异常");
             return Msg.fail();
         }
         {
-            articleServiceJdbcImp.updateArticle(article);
+            articleServiceJdbcImp.updateArticle(articleVO);
             return Msg.success();
         }
     }
@@ -81,14 +81,3 @@ public class ArticleController {
 
 }
 
-//    ArrayList<Reader> arrayList = new ArrayList<>();
-//        arrayList.add(Reader.builder().name("张三").sex("男").age(18).build());
-//                arrayList.add(Reader.builder().name("李思思").sex("女").age(23).build());
-//
-//                Article article = Article.builder()
-//                .id(id)
-//                .author("下雨")
-//                .createTime(new Date())
-//                .title("山沟皇帝")
-//                .readerList(arrayList)
-//                .build();
