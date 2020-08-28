@@ -10,12 +10,12 @@ spring:
     time-zone: GMT+8
   datasource:
     primary:
-      jdbc-url: jdbc:mysql://192.168.56.101:3306/ypzhang?characterEncoding=utf-8&serverTimezone=GMT%2B8
+      url: jdbc:mysql://192.168.56.101:3306/ypzhang?characterEncoding=utf-8&serverTimezone=GMT%2B8
       password: zyp
       username: root
       driver-class-name: com.mysql.cj.jdbc.Driver
     second:
-      jdbc-url: jdbc:mysql://192.168.56.101:3306/ypzhang2?characterEncoding=utf-8&serverTimezone=GMT%2B8
+      url: jdbc:mysql://192.168.56.101:3306/ypzhang2?characterEncoding=utf-8&serverTimezone=GMT%2B8
       password: zyp
       username: root
       driver-class-name: com.mysql.cj.jdbc.Driver
@@ -25,7 +25,15 @@ spring:
       ddl-auto: validate
     database: mysql
     show-sql: true
-
+#    generate-ddl: true
+  jta:
+    atomikos:
+      datasource:
+        max-pool-size: 20
+        borrow-connection-timeout: 60
+      connectionfactory:
+        max-pool-size: 20
+        borrow-connection-timeout: 60
 
 
 

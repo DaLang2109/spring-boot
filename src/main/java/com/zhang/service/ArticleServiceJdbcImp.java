@@ -25,7 +25,7 @@ public class ArticleServiceJdbcImp {
     @Resource
     private Mapper dozerMapper;
 
-    @javax.transaction.Transactional
+    @Transactional
     public void saveArticle(ArticleVO articleVO) {
         Article article = dozerMapper.map(articleVO, Article.class);
         Messge messge = Messge.builder().name("返回提示信息登记").content("一级警告!!!!").build();
@@ -33,7 +33,7 @@ public class ArticleServiceJdbcImp {
         messgeRepository.save(messge);
         articleRepository.save(article);
         
-//        int i=10/0;
+        int i=10/0;
     }
 
     
