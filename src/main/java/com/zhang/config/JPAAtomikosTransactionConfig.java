@@ -57,7 +57,7 @@ public class JPAAtomikosTransactionConfig {
      * jta transactionManager  spring对jta的支持
      * @return AtomikosJtaPlatform.transactionManager = userTransactionManager;
      */
-    @Bean(destroyMethod = "close", initMethod = "init",name = "transactionManager")
+    @Bean(name = "atomikosTransactionManager",destroyMethod = "close", initMethod = "init")
     public TransactionManager userTransactionManager() {
         UserTransactionManager userTransactionManager = new UserTransactionManager();
         userTransactionManager.setForceShutdown(false);//设置为true 网络出现问题时 强制断掉
@@ -68,7 +68,7 @@ public class JPAAtomikosTransactionConfig {
      *  事务管理器  注意这个bean的名字 一会儿还要用到
      */
     @Bean(name = "transactionManager")
-    @DependsOn({"userTransaction", "transactionManager"})
+    @DependsOn({"userTransaction", "atomikosTransactionManager"})
     public PlatformTransactionManager transactionManager() {
         UserTransaction userTransaction = userTransaction();
         AtomikosJtaPlatform.transaction = userTransaction;
