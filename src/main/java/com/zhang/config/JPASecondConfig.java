@@ -35,7 +35,7 @@ public class JPASecondConfig {
     }
 
     @Bean(name = "secondDataSource", initMethod = "init", destroyMethod = "close")
-    @ConfigurationProperties(prefix = "spring.datasource.second")
+    @ConfigurationProperties(prefix = "second")
     public AtomikosDataSourceBean secondDataSource() throws SQLException{
         MysqlXADataSource mysqlXaDataSource = new MysqlXADataSource();
 

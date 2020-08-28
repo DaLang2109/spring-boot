@@ -41,7 +41,7 @@ public class JPAAtomikosTransactionConfig {
         return hibernateJpaVendorAdapter;
     }
 
-    @Bean(name="userTransaction")
+    @Bean(name = "userTransaction")
     public UserTransaction userTransaction() {
         UserTransactionImp userTransactionImp = new UserTransactionImp();
         //配置事务超时时间
@@ -55,17 +55,19 @@ public class JPAAtomikosTransactionConfig {
 
     /**
      * jta transactionManager  spring对jta的支持
+     *
      * @return AtomikosJtaPlatform.transactionManager = userTransactionManager;
      */
-    @Bean(name = "atomikosTransactionManager",destroyMethod = "close", initMethod = "init")
+    @Bean(name = "atomikosTransactionManager", destroyMethod = "close", initMethod = "init")
     public TransactionManager userTransactionManager() {
         UserTransactionManager userTransactionManager = new UserTransactionManager();
         userTransactionManager.setForceShutdown(false);//设置为true 网络出现问题时 强制断掉
         AtomikosJtaPlatform.transactionManager = userTransactionManager;
         return userTransactionManager;
     }
+
     /**
-     *  事务管理器  注意这个bean的名字 一会儿还要用到
+     * 事务管理器  注意这个bean的名字 一会儿还要用到
      */
     @Bean(name = "transactionManager")
     @DependsOn({"userTransaction", "atomikosTransactionManager"})

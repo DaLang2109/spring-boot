@@ -39,7 +39,7 @@ public class JPAPrimaryConfig {
 
     @Primary
     @Bean(name = "primaryDataSource", initMethod = "init", destroyMethod = "close")
-    @ConfigurationProperties(prefix = "spring.datasource.primary") //注意这里
+    @ConfigurationProperties(prefix = "primary") //注意这里
     public DataSource primaryDataSource() throws SQLException{
         MysqlXADataSource mysqlXaDataSource = new MysqlXADataSource();
 

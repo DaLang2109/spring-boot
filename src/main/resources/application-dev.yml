@@ -25,7 +25,6 @@ spring:
       ddl-auto: validate
     database: mysql
     show-sql: true
-#    generate-ddl: true
   jta:
     atomikos:
       datasource:

@@ -28,12 +28,7 @@ public class ArticleServiceJdbcImp {
     @Transactional
     public void saveArticle(ArticleVO articleVO) {
         Article article = dozerMapper.map(articleVO, Article.class);
-        Messge messge = Messge.builder().name("返回提示信息登记").content("一级警告!!!!").build();
-
-        messgeRepository.save(messge);
         articleRepository.save(article);
-        
-        int i=10/0;
     }
 
     
